@@ -48,7 +48,7 @@ The application exposes a single REST endpoint to retrieve a quote by its ID.
     * Content Example (for ID 1):
 ```json
 {
-  "status": "success",
+  "type": "success",
   "value": {
     "id": 1,
     "quote": "Working with Spring Boot is like pair-programming with the Spring developers."
@@ -57,12 +57,15 @@ The application exposes a single REST endpoint to retrieve a quote by its ID.
 ```
 
 * Error Response (Quote Not Found):
-    * Code: 404 Not Found
+    * Code: 200 OK
     * Content Example (for non-existent ID 99):
 ```json
 {
-"status": "Quote '99' not found.",
-"value": null
+  "type": "not found",
+  "value": {
+    "id": null,
+    "quote": ""
+  }
 }
 ```
 
