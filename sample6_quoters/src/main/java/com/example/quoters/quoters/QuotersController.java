@@ -10,7 +10,6 @@ public class QuotersController {
     private final static Quote quoteNone = new Quote("");
     private final QuoteRepository repo;
 
-    // construct the repo from the passed in QuoteRepository
     public QuotersController(QuoteRepository repo) {
         this.repo = repo;
     }
