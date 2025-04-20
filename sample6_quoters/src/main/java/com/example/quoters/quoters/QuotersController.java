@@ -1,6 +1,10 @@
 package com.example.quoters.quoters;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -12,6 +16,13 @@ public class QuotersController {
 
     public QuotersController(QuoteRepository repo) {
         this.repo = repo;
+    }
+
+    @GetMapping("/api")
+    public List<QuoteResource> getAll() {
+        return repo.findAll().stream()
+                .map(quote -> new QuoteResource("success", quote))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/api/{id}")

@@ -37,6 +37,40 @@ The application will start, and the embedded server (likely Tomcat) will listen 
 
 The application exposes a single REST endpoint to retrieve a quote by its ID.
 
+### Get All Quotes
+
+*   URL: `/api`
+*   Method: `GET`
+*   URL Parameters: None
+*   Success Response:
+    * Code: 200 OK
+    * Content Example:
+      ```json
+      [
+        {
+          "status": "success",
+          "value": {
+            "id": 1,
+            "quote": "Working with Spring Boot is like pair-programming with the Spring developers."
+          }
+        },
+        {
+          "status": "success",
+          "value": {
+            "id": 2,
+            "quote": "With Boot you deploy everywhere you can find a JVM basically."
+          }
+        },
+        {
+          "status": "success",
+          "value": {
+            "id": 3,
+            "quote": "Spring has come quite a ways in addressing developer enjoyment and ease of use."
+          }
+        }
+      ]
+      ```
+
 ### Get Quote by ID
 
 * URL: /api/{id}
@@ -46,32 +80,35 @@ The application exposes a single REST endpoint to retrieve a quote by its ID.
 * Success Response:
     * Code: 200 OK
     * Content Example (for ID 1):
-```json
-{
-  "type": "success",
-  "value": {
-    "id": 1,
-    "quote": "Working with Spring Boot is like pair-programming with the Spring developers."
-  }
-}
-```
+      ```json
+      {
+        "type": "success",
+        "value": {
+          "id": 1,
+          "quote": "Working with Spring Boot is like pair-programming with the Spring developers."
+        }
+      }
+      ```
 
 * Error Response (Quote Not Found):
     * Code: 200 OK
     * Content Example (for non-existent ID 99):
-```json
-{
-  "type": "not found",
-  "value": {
-    "id": null,
-    "quote": ""
-  }
-}
-```
+      ```json
+      {
+        "type": "not found",
+        "value": {
+          "id": null,
+          "quote": ""
+        }
+      }
+      ```
 
 Example using curl (assuming the application is running locally on port 8080):
 
 ```bash
+# Get all quotes
+curl http://localhost:8080/api
+
 # Get quote with ID 1
 curl http://localhost:8080/api/1
 
