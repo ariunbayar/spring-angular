@@ -6,6 +6,7 @@
 
 *   Java Development Kit (JDK) 17 or later
 *   Gradle 7.x or later (or use the included Gradle Wrapper `./gradlew`)
+*   Execute quoter app at 8080 port.
 
 ## Building the Project
 
@@ -19,7 +20,9 @@ This command will compile the code, run tests, and package the application into 
 
 ## Running the Application
 
+
 The quoters application uses the default server port, 8080, so this application cannot also use the same port.
+
 You can run the application using the Gradle BootRun plugin by providing the port number as an argument:
 
 ```bash
@@ -30,4 +33,9 @@ Alternatively, you can run the packaged JAR file directly (after building it):
 
 ```bash
 java -jar build/libs/consumerrest-0.0.1-SNAPSHOT.jar --server.port=9000
+```
+
+You can confirm the successful execution of the code by checking the output on the command line that outputs something like the following:
+```
+: Quote[type=success, value=Value[id=4, quote=The most beautiful thing we can experience is the mysterious. It is the source of all true art and science. - Albert Einstein]]
 ```
