@@ -33,4 +33,8 @@ public class QuotersController {
                 .orElse(new QuoteResource("not found", quoteNone));
     }
 
+    @GetMapping("/api/random")
+    public QuoteResource getRandom() {
+        return this.getOne((long) (Math.random() * repo.count()));
+    }
 }

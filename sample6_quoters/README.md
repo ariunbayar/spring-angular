@@ -73,8 +73,8 @@ The application exposes a single REST endpoint to retrieve a quote by its ID.
 
 ### Get Quote by ID
 
-* URL: /api/{id}
-* Method: GET
+* URL: `/api/{id}`
+* Method: `GET`
 * URL Parameters:
     * id=[long]: The ID of the quote you want to retrieve.
 * Success Response:
@@ -103,6 +103,24 @@ The application exposes a single REST endpoint to retrieve a quote by its ID.
       }
       ```
 
+### Get Random Quote
+
+*   URL: `/api/random`
+*   Method: `GET`
+*   URL Parameters: None
+*   Success Response:
+    * Code: 200 OK
+    * Content Example (the actual quote returned will vary):
+      ```json
+      {
+        "status": "success",
+        "value": {
+          "id": 2,
+          "quote": "With Boot you deploy everywhere you can find a JVM basically."
+        }
+      }
+      ```
+
 Example using curl (assuming the application is running locally on port 8080):
 
 ```bash
@@ -111,6 +129,9 @@ curl http://localhost:8080/api
 
 # Get quote with ID 1
 curl http://localhost:8080/api/1
+
+# Get a random quote
+curl http://localhost:8080/api/random
 
 # Try to get a non-existent quote
 curl http://localhost:8080/api/99
